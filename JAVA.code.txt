@@ -1,0 +1,32 @@
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@SpringBootApplication
+public class EcommerceApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(EcommerceApplication.class, args);
+    }
+}
+
+@RestController
+class ProductController {
+
+    @GetMapping("/products")
+    public List<Product> getProducts() {
+        return Arrays.asList(
+            new Product(1, "Product 1", "Description of Product 1"),
+            new Product(2, "Product 2", "Description of Product 2")
+        );
+    }
+}
+
+class Product {
+    private int id;
+    private String name;
+    private String description;
+
+    // Constructors, getters, and setters omitted for brevity
+}
